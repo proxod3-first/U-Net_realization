@@ -59,8 +59,7 @@ class Decoder(Module):
         self.dec_blocks = ModuleList(
             [Block(channels[i], channels[i + 1])
                  for i in range(len(channels) - 1)])
-    
-     def forward(self, x, encFeatures):
+    def forward(self, x, encFeatures):
         # loop through the number of channels
         for i in range(len(self.channels) - 1):
             # pass the inputs through the upsampler blocks
