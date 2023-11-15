@@ -33,6 +33,7 @@ class Encoder(Module):
             [Block(channels[i], channels[i + 1])
                  for i in range(len(channels) - 1)])
         self.pool = MaxPool2d(2)
+        
     def forward(self, x):
         # initialize an empty list to store the intermediate outputs
         blockOutputs = []
@@ -59,6 +60,7 @@ class Decoder(Module):
         self.dec_blocks = ModuleList(
             [Block(channels[i], channels[i + 1])
                  for i in range(len(channels) - 1)])
+        
     def forward(self, x, encFeatures):
         # loop through the number of channels
         for i in range(len(self.channels) - 1):
@@ -73,6 +75,7 @@ class Decoder(Module):
             x = self.dec_blocks[i](x)
         # return the final decoder output
         return x
+    
     def crop(self, encFeatures, x):
         # grab the dimensions of the inputs, and crop the encoder
         # features to match the dimensions
