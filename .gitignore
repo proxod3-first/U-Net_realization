@@ -1,6 +1,6 @@
 .idea
 
-dataset/train/images/*
-dataset/train/masks/*
+dataset/train/images/
+dataset/train/masks/
 
 pyimagesearch/__pycache__
